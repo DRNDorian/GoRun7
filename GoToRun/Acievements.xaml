@@ -1,0 +1,116 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="GoToRun.Acievements"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot представляет корневую сетку, где размещается все содержимое страницы-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel содержит имя приложения и заголовок страницы-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="Go Run" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="Достижения" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <!--ContentPanel – поместите здесь дополнительное содержимое-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <ListBox x:Name="ListBox">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="650"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height ="auto"/>
+                            <RowDefinition Height ="auto"/>
+                            <RowDefinition Height ="auto"/>
+                            <RowDefinition Height ="auto"/>
+                            <RowDefinition Height ="auto"/>
+                            <RowDefinition Height ="auto"/>
+                            <RowDefinition Height ="auto"/>
+                            <RowDefinition Height ="auto"/>
+                            <RowDefinition Height ="auto"/>
+                            <RowDefinition Height ="auto"/>
+                            <RowDefinition Height ="auto"/>
+                            <RowDefinition Height ="auto"/>
+                            <RowDefinition Height ="auto"/>
+                            <RowDefinition Height ="auto"/>
+                            <RowDefinition Height ="auto"/>
+                            <RowDefinition Height ="auto"/>
+                            <RowDefinition Height ="auto"/>
+                            <RowDefinition Height ="auto"/>
+                            <RowDefinition Height ="auto"/>
+                            <RowDefinition Height ="auto"/>
+                            <RowDefinition Height ="auto"/>
+                            <RowDefinition Height ="auto"/>
+                            <RowDefinition Height ="auto"/>
+                            <RowDefinition Height ="auto"/>
+                            <RowDefinition Height ="auto"/>
+                            <RowDefinition Height ="auto"/>
+                        </Grid.RowDefinitions>
+                        <Image Grid.Column="1" Source="Assets/pic1.jpg" Width="150" Margin="10,0,190,0" Grid.RowSpan="4"/>
+                        <TextBlock Text="СИЛА ВОЛИ" Grid.Column="0" Grid.Row="0" FontSize="22" FontFamily="Segoe WP Light"/>
+
+                        <TextBlock Text="Награда не получена" Grid.Column="0" Grid.Row="1" FontSize="22" FontFamily="Segoe WP Light" Foreground="#FFFFA480"/>
+
+                        <TextBlock Text="Нужно: 2000 метров" Grid.Column="0" Grid.Row="2" FontSize="22" FontFamily="Segoe WP Light"/>
+
+
+
+                        <TextBlock Text="" Grid.Column="0" Grid.Row="4" FontSize="22" FontFamily="Segoe WP Light"/>
+                        <Image Grid.Column="1" Source="Assets/pic2.jpg" Width="150" Margin="10,0,190,0" Grid.Row="5" Grid.RowSpan="4"/>
+                        <TextBlock Text="ХОРОШИЙ БЕГУН" Grid.Column="0" Grid.Row="5" FontSize="22" FontFamily="Segoe WP Light"/>
+                        <TextBlock Text="Награда не получена" Grid.Column="0" Grid.Row="6" FontSize="22" FontFamily="Segoe WP Light" Foreground="#FFFFA480"/>
+                        <TextBlock Text="Нужно: 5000 метров" Grid.Column="0" Grid.Row="7" FontSize="22" FontFamily="Segoe WP Light"/>
+
+
+                        <TextBlock Text="" Grid.Column="0" Grid.Row="9" FontSize="22" FontFamily="Segoe WP Light"/>
+                        <Image Grid.Column="1" Source="Assets/pic3.jpg" Width="150" Margin="10,0,190,0" Grid.Row="11" Grid.RowSpan="4"/>
+                        <TextBlock Text="СПОРТСМЕН" Grid.Column="0" Grid.Row="11" FontSize="22" FontFamily="Segoe WP Light"/>
+                        <TextBlock Text="Награда не получена" Grid.Column="0" Grid.Row="12" FontSize="22" FontFamily="Segoe WP Light" Foreground="#FFFFA480"/>
+                        <TextBlock Text="Нужно: 10 км" Grid.Column="0" Grid.Row="13" FontSize="22" FontFamily="Segoe WP Light"/>
+
+
+                        <TextBlock Text="" Grid.Column="0" Grid.Row="15" FontSize="22" FontFamily="Segoe WP Light"/>
+                        <Image Grid.Column="1" Source="Assets/pic4.jpg" Width="150" Margin="10,0,190,0" Grid.Row="16" Grid.RowSpan="4"/>
+                        <TextBlock Text="МАРАФОНЕЦ" Grid.Column="0" Grid.Row="17" FontSize="22" FontFamily="Segoe WP Light"/>
+                        <TextBlock Text="Награда не получена" Grid.Column="0" Grid.Row="18" FontSize="22" FontFamily="Segoe WP Light" Foreground="#FFFFA480"/>
+                        <TextBlock Text="Нужно: 20 км" Grid.Column="0" Grid.Row="19" FontSize="22" FontFamily="Segoe WP Light"/>
+
+                        <TextBlock Text="" Grid.Column="0" Grid.Row="20" FontSize="22" FontFamily="Segoe WP Light"/>
+                        <Image Grid.Column="1" Source="Assets/pic5.jpg" Width="150" Margin="10,0,190,0" Grid.Row="22" Grid.RowSpan="4"/>
+                        <TextBlock Text="ГЕРОЙ" Grid.Column="0" Grid.Row="22" FontSize="22" FontFamily="Segoe WP Light"/>
+                        <TextBlock Text="Награда не получена" Grid.Column="0" Grid.Row="23" FontSize="22" FontFamily="Segoe WP Light" Foreground="#FFFFA480"/>
+                        <TextBlock Text="Нужно: 25 км" Grid.Column="0" Grid.Row="24" FontSize="24" FontFamily="Segoe WP Light"/>
+
+
+
+                    </Grid>
+
+                </Grid>
+            </ListBox>
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>
