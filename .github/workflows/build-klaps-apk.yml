@@ -1,0 +1,83 @@
+name: Build KLAPS APK
+
+on:
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Restore Android project
+        continue-on-error: true
+        shell: bash
+        run: |
+          : > build.log
+          set +e
+          cat klaps-payload/part-*.txt > /tmp/klaps.b64
+          echo "Payload characters: $(wc -c < /tmp/klaps.b64)" >> build.log
+          base64 -d /tmp/klaps.b64 > /tmp/klaps.zip 2>> build.log
+          echo "ZIP bytes: $(wc -c < /tmp/klaps.zip)" >> build.log
+          unzip -t /tmp/klaps.zip >> build.log 2>&1
+          unzip -q /tmp/klaps.zip >> build.log 2>&1
+          find klaps_android -maxdepth 3 -type f | sort >> build.log 2>&1
+
+      - uses: actions/setup-java@v4
+        continue-on-error: true
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: android-actions/setup-android@v3
+        continue-on-error: true
+
+      - uses: gradle/actions/setup-gradle@v4
+        continue-on-error: true
+        with:
+          gradle-version: '8.10.2'
+
+      - name: Build and collect diagnostics
+        if: always()
+        shell: bash
+        run: |
+          set +e
+          {
+            echo "=== ENVIRONMENT ==="
+            date -u
+            java -version
+            echo "sdkmanager: $(command -v sdkmanager)"
+            sdkmanager --version
+            echo "gradle: $(command -v gradle)"
+            gradle --version
+            echo "=== SDK INSTALL ==="
+            yes | sdkmanager --licenses >/dev/null || true
+            sdkmanager "platforms;android-35" "build-tools;35.0.0" "platform-tools"
+            echo "=== PROJECT ==="
+            ls -la klaps_android
+            echo "=== BUILD ==="
+            (cd klaps_android && gradle --no-daemon --stacktrace assembleDebug)
+            echo "Build exit: $?"
+          } >> build.log 2>&1
+          if [ -f klaps_android/app/build/outputs/apk/debug/app-debug.apk ]; then
+            cp klaps_android/app/build/outputs/apk/debug/app-debug.apk KLAPS-debug.apk
+            echo "APK ready: $(wc -c < KLAPS-debug.apk) bytes" >> build.log
+          else
+            echo "APK was not produced" >> build.log
+          fi
+          exit 0
+
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: KLAPS-build-result
+          path: |
+            build.log
+            KLAPS-debug.apk
+          if-no-files-found: warn
+          retention-days: 7
